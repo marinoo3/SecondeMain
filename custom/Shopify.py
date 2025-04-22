@@ -1,5 +1,6 @@
 import shopify
 import os
+
 from typing import Optional
 from pyactiveresource.connection import ResourceNotFound
 
@@ -37,7 +38,7 @@ class ShopifyManager():
             if not success:
                 raise Exception(f'Impossible to create {email}')
             
-    def create_gift_card(self, email, amount, product_id):
+    def create_gift_card(self, email:str, amount:float, product_id:int) -> shopify.GiftCard:
 
         customer = self.get_customer(email)
 
@@ -51,7 +52,7 @@ class ShopifyManager():
 
         return gift_card
     
-    def get_gift_card(self, id):
+    def get_gift_card(self, id:str) -> dict:
 
         with shopify.Session.temp(self.shop_url, '2023-01', self.access_token):
 

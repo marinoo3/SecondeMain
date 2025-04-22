@@ -1,8 +1,9 @@
-from typing import Optional
 from flask import url_for
 from datetime import date
 
 from . import db
+
+from typing import Optional
 
 
 
@@ -20,6 +21,7 @@ class Product():
         self.compressed_title = f"{attrs['productType'].replace('-', ' ').capitalize()} {attrs['gamme'].capitalize()} {attrs['color'].capitalize()} - {attrs['size'].upper()}"
         self.size = f"{attrs['gender'].capitalize()} - {attrs['size'].upper()}"
 
+
     def __icon_from_type(self, type: str) -> str:
 
         if type == 'maillot':
@@ -32,6 +34,7 @@ class Product():
             return url_for('static', filename='images/icon-tee.svg')
         else:
             return url_for('static', filename='images/icon-accessoires.svg')
+        
 
     def __seller(self, attrs: dict) -> dict:
 
@@ -43,6 +46,7 @@ class Product():
         }
 
         return seller
+    
     
     def __product(self, attrs: dict) -> dict:
 
@@ -60,11 +64,13 @@ class Product():
 
         return product
     
-    def formated_id(self):
+    
+    def formated_id(self) -> str:
 
         return "{:04d}".format(self.id)
     
-    def condense_json(self):
+    
+    def condense_json(self) -> dict:
 
         p_json = {
             'id': self.formated_id(),
@@ -74,8 +80,9 @@ class Product():
             'seller': self.seller
         }
         return p_json
+    
 
-    def complete_json(self):
+    def complete_json(self) -> dict:
 
         p_json = {
             'location': self.location,
@@ -102,6 +109,7 @@ class Inventaire():
         self.products = []
         self.database = db.Database()
 
+
     def load_products(self, location='inventory') -> Optional[list]:
 
         # empty products list
@@ -113,6 +121,7 @@ class Inventaire():
             self.products.append(product)
 
         return self.products
+    
     
     def filter_products(self, query:str) -> list:
 
@@ -145,8 +154,9 @@ class Inventaire():
                 filtered_products.append(p)
 
         return filtered_products
+    
 
-    def save_product(self, attrs: dict) -> str:
+    def save_product(self, attrs: dict) -> [str, str]:
 
         attrs['location'] = 'inventory'
         attrs['enterDate'] = date.today()
@@ -159,6 +169,7 @@ class Inventaire():
         p = Product(attrs, loc=attrs['location'])
 
         return p.formated_id(), p.title
+
 
     def remove_product(self, id:str, gift_card_id:str) -> None:
 

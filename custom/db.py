@@ -1,7 +1,8 @@
-from sqlalchemy import URL, MetaData, Table, create_engine, select, update, delete
+from sqlalchemy import URL, MetaData, Table, create_engine, select, update, delete, Engine
 from sqlalchemy.orm import sessionmaker
-
 import os
+
+from typing import Optional
 
 
 
@@ -15,7 +16,8 @@ class Database():
         self.products_table = self.__init_products_table()
         self.session = sessionmaker(bind=self.engine)
 
-    def __init_engine(self):
+
+    def __init_engine(self) -> Engine:
 
         connection_string = URL.create(
             'postgresql',
@@ -29,14 +31,16 @@ class Database():
 
         return engine
     
-    def __init_products_table(self):
+    
+    def __init_products_table(self) -> Table:
 
         metadata = MetaData()
         products = Table('products', metadata, autoload_with=self.engine, extend_existing=True)
         
         return products
     
-    def get_products(self, location:str):
+    
+    def get_products(self, location:str) -> list:
 
         with self.session() as session:
 
@@ -54,7 +58,8 @@ class Database():
 
         return products
     
-    def add_product(self, product_attrs):
+    
+    def add_product(self, product_attrs: dict) -> Optional[int]:
 
         with self.session() as session:
 
@@ -70,7 +75,8 @@ class Database():
         new_product_id = result.fetchone()[0] if result.rowcount else None
         return new_product_id
     
-    def move_product(self, product_id, new_values):
+    
+    def move_product(self, product_id: int, new_values) -> None:
 
         with self.session() as session:
 
@@ -89,7 +95,7 @@ class Database():
                 raise Exception(f'Database error {e}')
             
     
-    def remove_product(self, product_id):
+    def remove_product(self, product_id: int) -> None:
 
         with self.session() as session:
 

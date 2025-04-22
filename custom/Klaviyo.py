@@ -7,6 +7,7 @@ class KlaviyoManager():
     
     def __init__(self) -> None:
         self.api_key = os.environ['KLAVIYO_API_KEY']
+        
 
     def send_email(self, email_data:dict) -> None:
 
