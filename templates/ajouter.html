@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ajouter.css') }}">
+    <title>Seconde Main</title>
+</head>
+<body>
+    <div id="for-popup"></div>
+    <div class="popup" id="added-popup">
+        <div class="container">
+            <h2>Produit ajouté !</h2>
+            <p></p>
+            <div class="popup-button">
+                <button type='button' class="main-button">Okay</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <form class="wrapper" name="add-form">
+            <div class="contact">
+                <h2>Contact</h2>
+                <div class="inline-double">
+                    <div class="entry">
+                        <input role="text" autocomplete="off" id="name" name="name" placeholder="Prénom">
+                    </div>
+                    <div class="entry">
+                        <input type="text" autocomplete="off" id="lastname" name="lastName" placeholder="Nom">
+                    </div>
+                </div>
+                <div class="entry">
+                    <label for="email" class="icon">
+                        <img src="{{ url_for('static', filename='images/email.svg') }}" alt="">
+                    </label>
+                    <input type="email" autocomplete="off" id="email" name="email" placeholder="E-mail">
+                </div>
+                <div class="entry">
+                    <label for="phone" class="icon">
+                        <img src="{{ url_for('static', filename='images/phone.svg') }}" alt="">
+                    </label>
+                    <input type="tel" autocomplete="off" id="phone" name="phone" placeholder="Téléphone">
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                    <label for="checkbox">Appartient à MATCHY</label>
+                </div>
+                <div class="contact-status">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+            </div>
+            <div class="product">
+                <h2>Produit</h2>
+                <div class="inline-double">
+                    <div class="option">
+                        <select name="productType" id="product-type" class="default-select">
+                            <option value="" disabled selected hidden>Type de produit</option>
+                            <optgroup label="Haut">
+                                <option value="baselayer">Baselayer</option>
+                                <option value="gravel-tee">Gravel tee</option>
+                                <option value="maillot">Maillot</option>
+                                <option value="gilet">Gilet</option>
+                                <option value="bomber">Bomber</option>
+                                <option value="veste-mi-saison">Veste mi-saison</option>
+                                <option value="veste-hiver">Veste hiver</option>
+                            </optgroup>
+                            <optgroup label="Bas">
+                                <option value="cuissard">Cuissard</option>
+                                <option value="collant">Collant long</option>
+                            </optgroup>
+                            <optgroup label="Accessoires">
+                                <option value="manchettes">Manchettes</option>
+                                <option value="gants">Gants</option>
+                            </optgroup>
+                        </select>
+                        <label for="product-type">
+                            <img src="{{ url_for('static', filename='images/dropdown.svg') }}" alt="">
+                        </label>
+                    </div>
+                    <div class="option">
+                        <select name="gamme" id="gamme" class="default-select">
+                            <option value="" disabled selected hidden>Gamme</option>
+                            <option value="cargo">Cargo</option>
+                            <option value="essential">Essential</option>
+                            <option value="origins">Origins</option>
+                            <option value="pure">Pure</option>
+                            <option value="altitude">Altitude</option>
+                            <hr/>
+                            <option value="">N/A</option>
+                        </select>
+                        <label for="gamme">
+                            <img src="{{ url_for('static', filename='images/dropdown.svg') }}" alt="">
+                        </label>
+                    </div>
+                </div>
+                <div class="inline-double">
+                    <div class="option">
+                        <select name="gender" id="gender" class="default-select">
+                            <option value="" disabled selected hidden>Genre</option>
+                            <option value="homme">Homme</option>
+                            <option value="femme">Femme</option>
+                            <option value="unisexe">Unisexe</option>
+                        </select>
+                        <label for="gender">
+                            <img src="{{ url_for('static', filename='images/dropdown.svg') }}" alt="">
+                        </label>
+                    </div>
+                    <div class="option">
+                        <select name="size" id="size" class="default-select">
+                            <option value="" disabled selected hidden>Taille</option>
+                            <option value="xxs">XXS</option>
+                            <option value="xs">XS</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                            <option value="xl">XL</option>
+                            <option value="xxl">XXL</option>
+                        </select>
+                        <label for="size">
+                            <img src="{{ url_for('static', filename='images/dropdown.svg') }}" alt="">
+                        </label>
+                    </div>
+                </div>
+                <div class="inline-double">
+                    <div class="option">
+                        <select name="color" id="color" class="default-select">
+                            <option value="" disabled selected hidden>Couleur</option>
+                            <option value="blanc">⚪️ | Blanc</option>
+                            <option value="noir">⚫️ | Noir</option>
+                            <option value="bleu">🔵 | Bleu</option>
+                            <option value="vert">🟢 | Vert</option>
+                            <option value="moutarde">🟡 | Moutarde</option>
+                            <option value="orange">🟠 | Orange</option>
+                            <option value="rouge">🔴 | Rouge</option>
+                            <option value="violet">🟣 | Violet</option>
+                        </select>
+                        <label for="color">
+                            <img src="{{ url_for('static', filename='images/dropdown.svg') }}" alt="">
+                        </label>
+                    </div>
+                    <div class="option">
+                        <select name="collection" id="collection" class="default-select">
+                            <option value="" disabled selected hidden>Collection</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                        <label for="collection">
+                            <img src="{{ url_for('static', filename='images/dropdown.svg') }}" alt="">
+                        </label>
+                    </div>
+                </div>
+                <div class="etat-wrapper">
+                    <h3>Etat</h3>
+                    <div class="slider-container">
+                        <div class="slider-labels">
+                            <div class="v1 selected">
+                                <div class="vertical-line"></div>
+                                <span>Satisfaisant</span>
+                            </div>
+                            <div class="v2">
+                                <div class="vertical-line"></div>
+                                <span>Bon</span>
+                            </div>
+                            <div class="v3">
+                                <div class="vertical-line"></div>
+                                <span>Très bon</span>
+                            </div>
+                            <div class="v4">
+                                <div class="vertical-line"></div>
+                                <span>Neuf</span>
+                            </div>
+                          </div>
+                        <input type="range" autocomplete="off" min="1" max="4" value="1" class="slider" id="etat" name="etat">
+                      </div>
+                </div>
+                <div class="inline-compare">
+                    <div class="entry">
+                        <input type="number" autocomplete="off" id="original-price" placeholder="Prix d'origine" name="originalPrice">
+                        <label for="original-price">
+                            <p>€</p>
+                        </label>
+                    </div>
+                    <div class="compare-icon">
+                        <img src="{{ url_for('static', filename='images/right.svg') }}" alt="">
+                    </div>
+                    <div class="entry">
+                        <input type="number" autocomplete="off" id="second-hand-price" placeholder="Prix SM" name="secondhandPrice">
+                        <label for="second-hand-price">
+                            <p>€</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="ajouter-button">
+                    <button type='submit' class="main-button" name="submit-button">Ajouter</button>
+                </div>
+            </div>
+        </form>
+        <nav>
+            <a class="ajouter">
+                <img src="{{ url_for('static', filename='images/ajouter-fill.svg') }}" alt="">
+                <p>Ajouter</p>
+            </a>
+            <a class="inventaire" href="inventaire.html">
+                <img src="{{ url_for('static', filename='images/inventaire-outline.svg') }}" alt="">
+                <p href="inventaire.html">Inventaire</p>
+            </a>
+        </nav>
+    </main>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/ajouter.js') }}"></script>
+</body>
+</html>

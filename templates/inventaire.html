@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inventaire.css') }}">
+    <title>Seconde Main</title>
+</head>
+<body>
+    <div class="popup" id="sold-popup">
+        <div class="container">
+            <h2>Produit vendu</h2>
+            <p></p>
+            <div class="popup-button">
+                <button type='button' class="main-button">Okay</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="wrapper">
+            <div class="inventaire">
+                <h2>Inventaire</h2>
+                <div class="inventaire-container">
+                    <div class="filters">
+                        <div class="search">
+                            <label for="search-filter">
+                                <img src="{{ url_for('static', filename='images/chercher.svg') }}" alt="">
+                            </label>
+                            <input type="text" name="search-filter" id="search-filter" placeholder="Rechercher">
+                        </div>
+                        <div class="filter-option">
+                            <select name="product-type" id="product-type" class="default-select">
+                                <option value="inventory">Disponible</option>
+                                <option value="history">Historique</option>
+                            </select>
+                            <label for="product-type">
+                                <img src="{{ url_for('static', filename='images/dropdown.svg') }}" alt="">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="products-wrapper">
+                        <div class="lds-ring" id="loading"><div></div><div></div><div></div><div></div></div>
+                        <p id="no-result">Aucun produit trouvé</p>
+                        <ul class="products"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="details">
+                <h2>Details</h2>
+                <div class="product-preview">
+                    <div class="main">
+                        <img src="{{ url_for('static', filename='images/icon-maillot.svg') }}" alt="">
+                        <div class="info">
+                            <p class="title">Maillot Altitude - Noir</p>
+                            <p class="size">Homme - S</p>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <p class="old">50€</p>
+                        <p class="new">10€</p>
+                    </div>
+                </div>
+                <h3>Propriétaire</h3>
+                <div class="inline-double">
+                    <div class="entry">
+                        <input type="text" id="name" disabled value="" placeholder="N/A">
+                    </div>
+                    <div class="entry">
+                        <input type="text" id="lastname" disabled placeholder="N/A">
+                    </div>
+                </div>
+                <div class="entry">
+                    <label for="email" class="icon">
+                        <img src="{{ url_for('static', filename='images/email.svg') }}" alt="">
+                    </label>
+                    <input type="email" id="email" disabled placeholder="N/A">
+                </div>
+                <div class="entry">
+                    <label for="phone" class="icon">
+                        <img src="{{ url_for('static', filename='images/phone.svg') }}" alt="">
+                    </label>
+                    <input type="tel" id="phone" disabled placeholder="N/A">
+                </div>
+                <div class="code-section">
+                    <h3>Code</h3>
+                    <div class="entry" style="display: none;">
+                        <label for="discountCode" class="icon">
+                            <img src="{{ url_for('static', filename='images/discount.svg') }}" alt="">
+                        </label>
+                        <input type="text" id="discountCode" disabled placeholder="N/A">
+                        <label for="discountCode" class="icon actionable" id="showDiscount">
+                            <p id="balance"></p>
+                        </label>
+                    </div>
+                </div>
+                <div class="vendre-button">
+                    <button class="main-button">Vendre</button>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <a class="ajouter" href="ajouter.html">
+                <img src="{{ url_for('static', filename='images/ajouter-outline.svg') }}" alt="">
+                <p>Ajouter</p>
+            </a>
+            <a class="inventaire">
+                <img src="{{ url_for('static', filename='images/inventaire-fill.svg') }}" alt="">
+                <p href="ajouter.html">Inventaire</p>
+            </a>
+        </nav>
+    </main>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/inventaire.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Flask==3.0.3
+gunicorn==21.2.0
+MarkupSafe==2.1.5
+requests==2.32.3
+ShopifyAPI==12.5.0
+SQLAlchemy==2.0.31
+psycopg2==2.9.9
