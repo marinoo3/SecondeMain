@@ -1,6 +1,7 @@
 # 🧢 Seconde Main - Gestion de l'inventaire et automatisations
 
 Une solution personnalisée pour une gestion efficace et sans faille des produits de seconde main chez MATCHY Cycling.
+
 ![Capture d'écran de l'app](screenshot.png)
 
 
