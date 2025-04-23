@@ -22,4 +22,4 @@ Une solution personnalisée pour une gestion efficace et sans faille des produit
 - Ajout de produits liés à des clients Shopify
 - Visualisation de l'inventaire (produits disponibles et historique des ventes)
 - Stockage des informations produit (ID, modèle, collection, taille, couleur, bon d'achat lié à une vente, etc.)
-- Ventes depuis l'app : création automatique d'un bon d'achat de la valeur du produit et envoi d'un mail de notification
+- Ventes depuis l'app : création automatique d'un bon d'achat de la valeur du produit et envoi d'un mail de notification au client
